@@ -1,28 +1,116 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <label >Choose a Category:</label>
+    <select v-model="category">
+      <option value="Book">Books</option>
+      <option value="Magazine">Magazines</option>
+      <option value="Newspaper">Newspapers</option>
+      <option value="Others">Others</option>
+      <option value="All">All</option>
+    </select>
+    <table id="table" border = "1" >
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr :key="item.category" v-for="item in filteredList">
+          <td>{{ item.code }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.description }}</td>
+          <td>{{ item.category }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+//import * as data from "./data.json";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+  },
+
+  data(){
+    return{
+      category:"",
+      //list: data
+      list: [
+        {
+          code: "1",
+          name: "Lord of the Rings",
+          description: "JRR Tolkien",
+          category: "Book"
+        },
+        {
+          code: "2",
+          name: "FORBS",
+          description: "Millionairies in the world",
+          category: "Magazine"
+        },
+        {
+          code: "3",
+          name: "Los Tiempos",
+          description: "Clasificados",
+          category: "Newspaper"
+        },
+        {
+          code: "4",
+          name: "Lagartija",
+          description: "Book of jokes",
+          category: "Others"
+        }
+      ]
+    }
+    
+  },
+
+  computed: {
+    filteredList() {
+      return this.category === "" || this.category === "All"
+        ? this.list
+        : this.list.filter(item => item.category === this.category);
+    }
+  },
+
+  
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+table {
+  font-family: 'Open Sans', sans-serif;
+  width: 750px;
+  border-collapse: collapse;
+  border: 3px solid #44475C;
+  margin: 10px 10px 0 10px;
 }
+
+table th {
+  text-transform: uppercase;
+  text-align: left;
+  background: #44475C;
+  color: #FFF;
+  padding: 8px;
+  min-width: 30px;
+}
+
+table td {
+  text-align: left;
+  padding: 8px;
+  border-right: 2px solid #7D82A8;
+}
+table td:last-child {
+  border-right: none;
+}
+table tbody tr:nth-child(2n) td {
+  background: #D4D8F9;
+}
+
 </style>

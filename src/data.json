@@ -1,0 +1,26 @@
+[
+    {
+          "code": "1",
+          "name": "Lord of the Rings",
+          "description": "JRR Tolkien",
+          "category": "Book"
+    },
+    {
+          "code": "2",
+          "name": "FORBS",
+          "description": "Millionairies in the world",
+          "category": "Magazine"
+    },
+    {
+          "code": "3",
+          "name": "Los Tiempos",
+          "description": "Clasificados",
+          "category": "Newspaper"
+    },
+    {
+          "code": "4",
+          "name": "Lagartija",
+          "description": "Book of jokes",
+          "category": "others"
+    }
+]
