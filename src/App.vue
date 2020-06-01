@@ -18,7 +18,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr :key="item.category" v-for="item in filteredList">
+        <tr :key="item.code" v-for="item in filteredList">
           <td>{{ item.code }}</td>
           <td>{{ item.name }}</td>
           <td>{{ item.description }}</td>
@@ -30,7 +30,8 @@
 </template>
 
 <script>
-//import * as data from "./data.json";
+//import data from "./data.json";
+import * as data from "./data2.json";
 
 export default {
   name: 'App',
@@ -41,7 +42,8 @@ export default {
     return{
       category:"",
       //list: data
-      list: [
+      list: data.obj
+      /*list: [
         {
           code: "1",
           name: "Lord of the Rings",
@@ -66,7 +68,7 @@ export default {
           description: "Book of jokes",
           category: "Others"
         }
-      ]
+      ]*/
     }
     
   },
