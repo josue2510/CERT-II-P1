@@ -8,6 +8,8 @@
       <option value="Others">Others</option>
       <option value="All">All</option>
     </select>
+    <br>
+    <input v-model="name" placeholder="Escriba el nombre" />
     <table id="table" border = "1" >
       <thead>
         <tr>
@@ -41,6 +43,7 @@ export default {
   data(){
     return{
       category:"",
+      name:"",
       //list: data
       list: data.obj
       /*list: [
@@ -75,9 +78,13 @@ export default {
 
   computed: {
     filteredList() {
-      return this.category === "" || this.category === "All"
+      const listByCategory = 
+      this.category === "" || this.category === "All"
         ? this.list
         : this.list.filter(item => item.category === this.category);
+      return this.name === ""
+        ? listByCategory
+        : listByCategory.filter(item => item.name === this.name);
     }
   },
 
